@@ -11,6 +11,7 @@ Features:
   6. CSS using Twitter Bootstrap
   
 Screenshots:
+
 Homescreen Image:
 ![Homescreen Image](https://github.com/ankschoubey/hospital-management-system-php-mysql/blob/master/readme-images/index.png?raw=true)
 
