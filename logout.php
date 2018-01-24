@@ -8,10 +8,10 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<meta name="author" content="Tshaba Phomolo Benedict" >
+	<meta name="author" content="Tshaba Phomolo Benedict" />
 	<meta http-equiv="refresh" content="2;url=index.php"/>
 	<title>HMS | Logout</title>
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 	<header>
