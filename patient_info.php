@@ -27,7 +27,12 @@
 				</tr>
 	</thead>
 <?php
-    $result = getPatientsFor('Cardiologist');
+	if(isset($_GET['speciality'])){
+		 $speciality = $_GET['speciality'];
+		 $result = getPatientsFor($speciality);
+	}else {
+		$result = getPatientsFor(); //fallback to 'Dentist'
+	}
 
     while ($row = $result->fetch_array()) {
         $status = ' ';
