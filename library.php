@@ -14,17 +14,12 @@
         die('connection failed: '.$connection->connect_error);
     }
 
-    function secure($unsafe_data)
-    {
-        return htmlentities($unsafe_data);
-    }
-
     function login($email_id_unsafe, $password_unsafe, $table = 'users')
     {
         global $connection;
 
-        $email_id = secure($email_id_unsafe);
-        $password = secure($password_unsafe);
+        $email_id = $email_id_unsafe;
+        $password = $password_unsafe;
 
         $sql = "SELECT COUNT(*) FROM $table WHERE email = '$email_id' AND password = '$password';";
 
@@ -71,10 +66,10 @@
     {
         global $connection,$error_flag;
 
-        $email = secure($email_id_unsafe);
-        $password = secure($password_unsafe);
-        $speciality = secure($speciality_unsafe);
-        $fullname = ucfirst(secure($full_name_unsafe));
+        $email = $email_id_unsafe;
+        $password = $password_unsafe;
+        $speciality = $speciality_unsafe;
+        $fullname = ucfirst($full_name_unsafe);
 
         $sql;
 
@@ -147,11 +142,11 @@
   {
       global $connection, $error_flag,$result;
 
-      $full_name = ucfirst(secure($full_name_unsafe));
-      $age = secure($age_unsafe);
-      $weight = secure($weight_unsafe);
-      $phone_no = secure($phone_no_unsafe);
-      $address = secure($address_unsafe);
+      $full_name = ucfirst($full_name_unsafe);
+      $age = $age_unsafe;
+      $weight = $weight_unsafe;
+      $phone_no = $phone_no_unsafe;
+      $address = $address_unsafe;
 
       $sql = "INSERT INTO `patient_info` VALUES (NULL, '$full_name', $age,$weight, '$phone_no','$address');";
 
@@ -169,9 +164,9 @@
     function appointment_booking($patient_id_unsafe, $specialist_unsafe, $medical_condition_unsafe)
     {
         global $connection;
-        $patient_id = secure($patient_id_unsafe);
-        $specialist = secure($specialist_unsafe);
-        $medical_condition = secure($medical_condition_unsafe);
+        $patient_id = $patient_id_unsafe;
+        $specialist = $specialist_unsafe;
+        $medical_condition = $medical_condition_unsafe;
 
         $sql = "INSERT INTO appointments VALUES (NULL, $patient_id, '$specialist', '$medical_condition', NULL, NULL, 'no')";
 
@@ -189,9 +184,9 @@
 
         $sql;
 
-        $appointment_no = (int) secure($appointment_no_unsafe);
-        $column_name = secure($column_name_unsafe);
-        $data = secure($data_unsafe);
+        $appointment_no = (int) $appointment_no_unsafe;
+        $column_name = $column_name_unsafe;
+        $data = $data_unsafe;
 
         if ($column_name == 'payment_amount') {
             $data = (int) $data;
@@ -286,7 +281,7 @@
     {
         global $connection;
 
-        $appointment_no = secure($appointment_no_unsafe);
+        $appointment_no = $appointment_no_unsafe;
         $i = 0;
 
         $result = $connection->query("SELECT doctors_suggestion FROM appointments WHERE appointment_no=$appointment_no;");
@@ -308,7 +303,7 @@
     {
         global $connection;
 
-        $id = secure($id_unsafe);
+        $id = $id_unsafe;
 
         return $connection->query("DELETE FROM $table WHERE email='$id';");
     }
@@ -318,6 +313,13 @@
         global $connection;
 
         return $connection->query("SELECT email FROM $table;");
+    }
+    
+    function getDoctorDetails()
+    {
+        global $connection;
+
+        return $connection->query("SELECT speciality FROM doctors");
     }
 
     function noAccessForNormal()
