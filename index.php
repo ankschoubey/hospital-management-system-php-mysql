@@ -10,7 +10,7 @@
 <div class="container">
  	<h1>Welcome to Sunrise Hospital's Official Website</h1>
     <p class="block-quote">Our aim has always been to bring world class medical care within the reach of common man.</p>
-    <p><?php include('slideshow.php');?></p>
+    <?php include('slideshow.php');?>
   <?php 
     if(isset($_POST['lemail'])){
       $i = login($_POST['lemail'],$_POST['lpassword'],"users");
@@ -68,7 +68,7 @@
 
 	      <div class="form-group">
 	        <input type="submit" class="btn btn-primary">
-	        <input type="reset" class="btn btn-danger"></button>
+	        <input type="reset" class="btn btn-danger">
 	      </div>
     </form>
   </div>
