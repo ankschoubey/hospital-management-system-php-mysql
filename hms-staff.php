@@ -3,16 +3,13 @@
     { 
         session_start(); 
     } 
+    
+	include("header.php");
+	include("library.php");
+	noAccessIfLoggedIn();
+	include("nav-bar.php");
 ?>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="jumbotron.css" rel="stylesheet">
 
-<?php 
-  include("header.php");
-  include("library.php");
-  noAccessIfLoggedIn();
-  include("nav-bar.php");
-?>
 <div class="container">
  	<h1 align=center>Staff Login for Sunrise Hospital</h1>
 
@@ -60,7 +57,6 @@
 </div>
 
 
-<?php 
-include("footer.php"); ?>
+<?php include("footer.php"); ?>
 
 

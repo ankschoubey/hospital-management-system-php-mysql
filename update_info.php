@@ -3,17 +3,18 @@
     {
         session_start();
     }
+
+	include("header.php");
+	include("library.php");
+  
+	noAccessIfNotLoggedIn();
+	noAccessForNormal();
+	noAccessForClerk();
+	noAccessForAdmin();
+  
+	include("nav-bar.php");
 ?>
-<link href="bootstrap.min.css" rel="stylesheet">
-<?php
-  include("header.php");
-  include("library.php");
-  noAccessIfNotLoggedIn();
-  noAccessForNormal();
-  noAccessForClerk();
-  noAccessForAdmin();
-  include("nav-bar.php");
-?>
+
 <div class="container">
 <h2>Update Patient Info </h2>
 <p>Enter Information Below</p>
@@ -51,4 +52,5 @@
 ?>
 </table>
 </div>
+
 <?php include("footer.php");?>

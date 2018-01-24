@@ -1,16 +1,15 @@
 <?php
-session_start();
+	session_start();
+	
+	include("header.php");
+	include("library.php");
+  
+	noAccessIfLoggedIn();
 ?>
-<link href="bootstrap.min.css" rel="stylesheet">
 
-<?php 
-  include("header.php");
-  include("library.php");
-  noAccessIfLoggedIn();
-?>
 <div class="container">
  	<h1>Welcome to Sunrise Hospital's Official Website</h1>
-    <p class="block-quote">Our aim has always been to bring world–class medical care within the reach of common man.</p>
+    <p class="block-quote">Our aim has always been to bring world class medical care within the reach of common man.</p>
     <p><?php include('slideshow.php');?></p>
   <?php 
     if(isset($_POST['lemail'])){
@@ -75,6 +74,7 @@ session_start();
   </div>
 </div>
 </div>
+
 <?php include("footer.php"); ?>
 
 

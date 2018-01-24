@@ -15,7 +15,7 @@
 </head>
 <body>
 	<header>
-		<h1 class="dark">You have successfully logged out!</h1>
+		<h1 class="text-center text-info">You have successfully logged out!</h1>
 	</header>
 
 <?php include('footer.php'); ?>

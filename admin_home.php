@@ -3,21 +3,17 @@
     { 
         session_start(); 
     } 
+
+    include("header.php");
+	include("library.php");
+
+	noAccessForClerk();
+	noAccessForDoctor();
+	noAccessForNormal();
+
+	noAccessIfNotLoggedIn();
 ?>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="jumbotron.css" rel="stylesheet">
 
-<?php 
-  include("header.php");
-  include("library.php");
-
-  noAccessForClerk();
-  noAccessForDoctor();
-  noAccessForNormal();
-
-  noAccessIfNotLoggedIn();
-
-?>
 <div class="container">
  	<h1 align=center>Admin Login for Sunrise Hospital</h1>
   

@@ -9,11 +9,13 @@
                 }
         ?>
         </p>
-        <p align="right">
-        Made and managed using HMS by KAP - <?php echo date('Y'); ?>
+        <p class="text-center">
+        Originally Made using HMS by KAP - Copyright &copy; <?php echo date('Y'); ?> Tshaba Phomolo Benedict
         </nav>
 		</p>
       </footer>
     </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>

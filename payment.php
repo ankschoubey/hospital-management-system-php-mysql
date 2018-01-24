@@ -4,26 +4,21 @@
         session_start(); 
     } 
 
+	include("header.php");
+	include("library.php");
+
+	noAccessForNormal();
+	noAccessForAdmin();
+	noAccessForDoctor();
+
+	include('nav-bar.php');
 ?>
-<link href="bootstrap.min.css" rel="stylesheet">
 
-<?php 
-  include("header.php");
-  include("library.php");
-
-  noAccessForNormal();
-  noAccessForAdmin();
-  noAccessForDoctor();
-
-  include('nav-bar.php');
-?>
 <div class="container">
 <h2>Update Payment Information</h2>
 <p>Enter information below</p>
 <table class="table table-striped">
 <?php
-
-
 
   if(isset($_POST['payment'])){
       $i = update_appointment_info($_POST['appointment_no'], 'payment_amount', $_POST['payment']);
@@ -77,7 +72,4 @@
 
 </div>
 
-
 <?php include("footer.php"); ?>
-
-

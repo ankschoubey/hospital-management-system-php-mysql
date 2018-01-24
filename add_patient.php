@@ -3,17 +3,16 @@
     {
         session_start();
     }
-?>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="jumbotron.css" rel="stylesheet">
-<?php
-  include("header.php");
-  include("library.php");
-  noAccessForAdmin();
-  noAccessIfNotLoggedIn();
-  if($_SESSION["user-type"] != 'normal'){
-    include("nav-bar.php");
-  }
+    
+	include("header.php");
+	include("library.php");
+	
+	noAccessForAdmin();
+	noAccessIfNotLoggedIn();
+ 
+	if($_SESSION["user-type"] != 'normal'){
+		include("nav-bar.php");
+	}
 ?>
 <div class="container">
   <h2>Welcome, <?php echo $_SESSION["fullname"];?>!</h2>

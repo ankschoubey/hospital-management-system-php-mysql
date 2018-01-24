@@ -6,7 +6,7 @@
 
 <?php
 
-    $connection = new mysqli('localhost', 'root', 'root', 'hospital');
+    $connection = new mysqli('localhost', 'root', 't00r', 'hospital');
 
     $error_flag = 0;
     $result;
