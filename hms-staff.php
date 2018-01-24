@@ -3,7 +3,7 @@
     { 
         session_start(); 
     } 
-    ini_set('display_errors', '1');
+
 	include("header.php");
 	include("library.php");
 	noAccessIfLoggedIn();
