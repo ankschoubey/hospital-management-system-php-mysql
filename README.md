@@ -12,23 +12,7 @@ This **was my first short PHP project** for Web Technology subject created in Oc
   
 ## Screenshots:
 
-### Homescreen Image:
-![Homescreen Image](https://github.com/ankschoubey/hospital-management-system-php-mysql/blob/master/readme-images/index.png?raw=true)
-
-### Add Patient:
-![Add Patient Image](https://github.com/ankschoubey/hospital-management-system-php-mysql/blob/master/readme-images/add-patient.png?raw=true)
-
-### Admin/Staff Login:
-![Admin/Staff Login Image](https://github.com/ankschoubey/hospital-management-system-php-mysql/blob/master/readme-images/staff-login.png?raw=true)
-
-### Admin Panel:
-![Admin Panel Image](https://github.com/ankschoubey/hospital-management-system-php-mysql/blob/master/readme-images/hms-admin.png?raw=true)
-
-### View All Appointments:
-![View All Appointments Image](https://github.com/ankschoubey/hospital-management-system-php-mysql/blob/master/readme-images/all-appointments.png?raw=true)
-
-### Update Information:
-![Update Information Image](https://github.com/ankschoubey/hospital-management-system-php-mysql/blob/master/readme-images/update-patient-info.png?raw=true)
+Removed to increase load times on slow connections
   
 **Add this to MySQL**
 ```SQL
