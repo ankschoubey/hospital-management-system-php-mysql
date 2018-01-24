@@ -2,6 +2,7 @@
     if (!isset($_SESSION)) {
         session_start();
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +18,12 @@
 
       switch ($_SESSION['user-type']) {
       case 'doctor':
-
+		$result = getDoctorDetails();
+		$row = $result->fetch_array(MYSQLI_ASSOC);
+		$speciality = $row['speciality'];
+		
         echo $frontLink.'add_patient.php"> Add Patient '.$endLink;
-        echo $frontLink.'patient_info.php"> Upcomming Appointments '.$endLink;
+        echo $frontLink.'patient_info.php?speciality='.$speciality.'"> Upcomming Appointments '.$endLink;
         break;
       case 'clerk':
         echo $frontLink.'add_patient.php"> Add Patient '.$endLink;
