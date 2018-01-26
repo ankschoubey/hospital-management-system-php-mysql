@@ -14,11 +14,12 @@
 
   if (isset($_SESSION['user-type'])) {
       echo $beginning;
+      $email = $_SESSION['email'];
 
       switch ($_SESSION['user-type']) {
       case 'doctor':
-		$result = getDoctorDetails();
-		$speciality = $result[0]['speciality'];
+		$result = getDoctorDetails($email);
+		$speciality = $result['speciality'];
 		
         echo $frontLink.'add_patient.php"> Add Patient '.$endLink;
         echo $frontLink.'patient_info.php?speciality='.$speciality.'"> Upcomming Appointments '.$endLink;
