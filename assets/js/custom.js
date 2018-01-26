@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var images = ["images/s1.jpg", "images/s2.jpg", "images/s3.jpg","images/s4.jpg"];
+	var images = ["assets/images/s1.jpg", "assets/images/s2.jpg", "assets/images/s3.jpg","assets/images/s4.jpg"];
 
 	var i = 1;
 	var max = images.length;
