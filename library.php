@@ -7,12 +7,11 @@
 <?php
 	include('api/scrudAPI.php');
 
-    $connection = new mysqli('localhost', 'root', 't00r', 'hospital');
     $conn = new Database();
 	try {
 	  $conn->connect();
 	} catch(ConnectErrorException $e) {
-	  print "Connect Says ".$e->getMessage();
+	  status('con-failed');
 	  exit();
 	}
 
@@ -284,20 +283,21 @@
 
     function appointment_status($appointment_no_unsafe)
     {
-        global $connection;
+        global $conn;
 
         $appointment_no = $appointment_no_unsafe;
         $i = 0;
 
-        $result = $connection->query("SELECT doctors_suggestion FROM appointments WHERE appointment_no=$appointment_no;");
-        if ($result === false) {
+        $conn->select('appointments','doctors_suggestion', 'appointment_no= :appointment_no', ['appointment_no'=>$appointment_no]);
+        $result = $conn->getResult();
+        if ($result[0] === false) {
             return 0;
         } else {
             ++$i;
         }
 
-        $result = $connection->query('SELECT payment_amount FROM appointments WHERE appointment_no=appointment_no;');
-        if ($result->num_rows == 1) {
+        $conn->select('appointments','payment_amount', 'appointment_no= :appointment_no', ['appointment_no'=>$appointment_no]);
+        if ($conn->dbgNr() == 1) {
             ++$i;
         }
 
