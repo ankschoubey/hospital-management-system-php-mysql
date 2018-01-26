@@ -185,7 +185,7 @@
 
     function update_appointment_info($appointment_no_unsafe, $column_name_unsafe, $data_unsafe)
     {
-        global $connection;
+        global $conn;
 
         $sql;
 
@@ -200,14 +200,13 @@
             $sql = "UPDATE appointments SET $column_name = '$data' WHERE appointment_no = $appointment_no;";
         }
         echo $sql;
-        if ($connection->query($sql) === true) {
+        try {
+			$conn->sqlQuery($sql);
             echo status('update-success');
-
             return 1;
-        } else {
+        } catch (QueryErrorException $e) {
             echo status('update-fail');
-            echo 'Error: '.$sql.'<br>'.$connection->error;
-
+            echo 'Error: <br/>'.$e->getMessage();
             return 0;
         }
     }
