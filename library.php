@@ -21,16 +21,15 @@
 
     function login($email_id_unsafe, $password_unsafe, $table = 'users')
     {
-        global $connection;
+        global $conn;
 
         $email_id = $email_id_unsafe;
         $password = $password_unsafe;
 
-        $sql = "SELECT COUNT(*) FROM $table WHERE email = '$email_id' AND password = '$password';";
-
-        $result = $connection->query($sql);
-
-        $num_rows = (int) $result->fetch_array()['0'];
+        $conn->select($table, 'COUNT(*)', 'email = :email AND password = :pass', ['email'=>$email_id, 'pass' => $password]);
+		$result = $conn->getResult(); 
+		
+        $num_rows = (int) $result[0]['COUNT(*)'];
 
         if ($num_rows > 1) {
             //send email to sysadmin that my site has been hacked
@@ -48,11 +47,12 @@
             }
 
             if ($table == 'users' || $table == 'doctors' || $table == 'clerks') {
-                $sql = "SELECT fullname FROM $table WHERE email = '$email_id' AND password = '$password';";
-
-                $result = $connection->query($sql);
-
-                $fullname = $result->fetch_array()['fullname'];
+				$bind = ['email' => $email_id, 'password' => $password];
+                $conn->select($table, 'fullname', 'email = :email AND password = :password', $bind);
+                
+                $result = $conn->getResult()[0]; //we expect one row
+                
+				$fullname = $result['fullname'];
                 $_SESSION['fullname'] = $fullname;
                 if ($table == 'users') {
                     $_SESSION['user-type'] = 'normal';
