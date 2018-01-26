@@ -18,9 +18,6 @@
 
     $error_flag = 0;
     $result;
-    if ($connection->connect_error) {
-        die('connection failed: '.$connection->connect_error);
-    }
 
     function login($email_id_unsafe, $password_unsafe, $table = 'users')
     {
@@ -43,7 +40,7 @@
 
             return 0;
         } else {
-            echo "<div class='alert alert-success'> <strong>Well done!</strong> Logged In</div>";
+            echo "<div class='alert alert-success'> <strong>Access Granted!</strong> Logged In</div>";
             $_SESSION['username'] = $email_id;
 
             if ($table == 'admin') {
@@ -73,7 +70,7 @@
 
     function register($email_id_unsafe, $password_unsafe, $full_name_unsafe, $speciality_unsafe = 'doctor', $table = 'users')
     {
-        global $connection,$error_flag;
+        global $conn, $error_flag;
 
         $email = $email_id_unsafe;
         $password = $password_unsafe;
@@ -97,12 +94,13 @@
                 break;
         }
 
-        if ($connection->query($sql) === true) {
+        try {
+			$conn->sqlQuery($sql);
             echo status('record-success');
             if ($table == 'users' && $error_flag == 0) {
                 return login($email, $password);
             }
-        } else {
+        } catch (QueryErrorException $e) {
             echo status('record-fail');
         }
     }
@@ -240,7 +238,7 @@
 
     function get_table($purpose, $data)
     {
-        global $connection;
+        global $conn;
 
         $sql;
 
@@ -251,7 +249,7 @@
             case 'doctor-home':
                 $sql = '';
 
-                $result = $connection->query($sql);
+                $result = $conn->sqlQuery($sql);
 
                 echo "<table border='1'>
 				<tr>
@@ -263,7 +261,7 @@
 				<th>option</th>
 				</tr>";
 
-                while ($row = $result->fetch_array()) {
+                foreach ($result as $row) {
                     echo '<tr>';
                     echo '<td>'.$row['appointment_no'].'</td>';
                     echo '<td>'.$row['full_name'].'</td>';
