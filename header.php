@@ -12,7 +12,7 @@
   <body>
       <div class="container" style="padding-top: 10px;">
         <nav class="navbar  navbar-static-top">
-          <a class="navbar-brand"> Sunrise Hospital</a>
+          <a href="index.php" class="navbar-brand"> Sunrise Hospital</a>
             <ul class="nav nav-pills">
               <li class="nav-item">
                 <a href="https://goo.gl/maps/PyT52gM87su" target="_blank"> Address: Plot no- 1, Opposite SBI, Sector 12, Kharghar, Navi Mumbai</a>
