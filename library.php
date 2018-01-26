@@ -311,6 +311,7 @@
 
     function delete($table, $id_unsafe)
     {
+		global $conn;
         $id = $id_unsafe;
         $conn->delete($table, "email = $id");
         return $conn->getResult();
@@ -318,12 +319,14 @@
 
     function getListOfEmails($table)
     {
+		global $conn;
         $conn->select($table, 'email');
         return $conn->getResult();
     }
     
     function getDoctorDetails($email)
     {
+		global $conn;
         $conn->select('doctors','email, speciality','email = :email',['email'=>$email]);
         return $conn->getResult()[0]; // We expect a single row since the email is assumed to be unique
     }
