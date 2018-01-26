@@ -232,9 +232,10 @@
 
     function getAllPatientDetail($appointment_no)
     {
-        global $connection;
-
-        return $connection->query("SELECT appointment_no, full_name, dob, weight, phone_no, address, medical_condition FROM patient_info, appointments where appointment_no=$appointment_no AND patient_info.patient_id = appointments.patient_id;");
+		global $conn;
+		$bind = ['appointment_no'=>$appointment_no];
+        $conn->sqlQuery("SELECT appointment_no, full_name, dob, weight, phone_no, address, medical_condition FROM patient_info, appointments where appointment_no = :appointment_no AND patient_info.patient_id = appointments.patient_id;", $bind);
+        return $conn->getResult();
     }
 
     function get_table($purpose, $data)

@@ -29,10 +29,9 @@
 
   if(isset($_GET['appointment_no'])){
     $appointment_no = $_GET['appointment_no'];
-    $result = getAllPatientDetail($appointment_no);
 
-	$row = $result->fetch_array();
-  
+    $row = getAllPatientDetail($appointment_no)[0];
+	
     $link = "<tr><th>";
     $mid = "</th><td>";
     $endingTag = "</td></tr>";
