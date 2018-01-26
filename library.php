@@ -147,7 +147,7 @@
 
   function enter_patient_info($full_name_unsafe, $age_unsafe, $weight_unsafe, $phone_no_unsafe, $address_unsafe)
   {
-      global $connection, $error_flag,$result;
+      global $conn, $error_flag, $result;
 
       $full_name = ucfirst($full_name_unsafe);
       $age = $age_unsafe;
@@ -157,14 +157,13 @@
 
       $sql = "INSERT INTO `patient_info` VALUES (NULL, '$full_name', $age,$weight, '$phone_no','$address');";
 
-      if ($connection->query($sql) === true) {
-          echo status('record-success');
-
-          return $connection->insert_id;
-      } else {
-          echo status('record-fail');
-
-          return 0;
+      try {
+		$conn->sqlQuery($sql);
+		echo status('record-success');
+		return $conn->dbgNr();
+      } catch (QueryErrorException $e) {
+		echo status('record-fail');
+		return 0;
       }
   }
 
