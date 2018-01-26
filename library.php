@@ -169,18 +169,17 @@
 
     function appointment_booking($patient_id_unsafe, $specialist_unsafe, $medical_condition_unsafe)
     {
-        global $connection;
+        global $conn;
         $patient_id = $patient_id_unsafe;
         $specialist = $specialist_unsafe;
         $medical_condition = $medical_condition_unsafe;
 
-        $sql = "INSERT INTO appointments VALUES (NULL, $patient_id, '$specialist', '$medical_condition', NULL, NULL, 'no')";
-
-        if ($connection->query($sql) === true) {
-            echo status('appointment-success', $connection->insert_id);
-        } else {
+        try {
+			$insid = $conn->insert('appointments',['appointment_no'=>NULL, 'patient_id'=>$patient_id, 'speciality'=>$specialist, 'medical_condition'=>$medical_condition, 'doctors_suggestion'=>NULL, 'payment_amount'=>NULL, 'case_closed'=>'no']);
+            echo status('appointment-success', $insid);
+        } catch (QueryErrorException $e) {
             echo status('appointment-fail');
-            echo 'Error: '.$sql.'<br>'.$connection->error;
+            echo 'Error: <br/>'.$e->getMessage();
         }
     }
 
