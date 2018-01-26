@@ -5,8 +5,16 @@
 ?>
 
 <?php
+	include('api/scrudAPI.php');
 
     $connection = new mysqli('localhost', 'root', 't00r', 'hospital');
+    $conn = new Database();
+	try {
+	  $conn->connect();
+	} catch(ConnectErrorException $e) {
+	  print "Connect Says ".$e->getMessage();
+	  exit();
+	}
 
     $error_flag = 0;
     $result;
@@ -55,6 +63,7 @@
                     $_SESSION['user-type'] = 'clerk';
                 } else {
                     $_SESSION['user-type'] = 'doctor';
+                    $_SESSION['email'] = $email_id;
                 }
             }
 
@@ -301,25 +310,21 @@
 
     function delete($table, $id_unsafe)
     {
-        global $connection;
-
         $id = $id_unsafe;
-
-        return $connection->query("DELETE FROM $table WHERE email='$id';");
+        $conn->delete($table, "email = $id");
+        return $conn->getResult();
     }
 
     function getListOfEmails($table)
     {
-        global $connection;
-
-        return $connection->query("SELECT email FROM $table;");
+        $conn->select($table, 'email');
+        return $conn->getResult();
     }
     
-    function getDoctorDetails()
+    function getDoctorDetails($email)
     {
-        global $connection;
-
-        return $connection->query("SELECT speciality FROM doctors");
+        $conn->select('doctors','email, speciality','email = :email',['email'=>$email]);
+        return $conn->getResult()[0]; // We expect a single row since the email is assumed to be unique
     }
 
     function noAccessForNormal()
@@ -334,7 +339,9 @@
     {
         if (isset($_SESSION['user-type'])) {
             if ($_SESSION['user-type'] == 'doctor') {
-                echo '<script type="text/javascript">window.location = "patient_info.php"</script>';
+				$email = $_SESSION['email'];
+				$result = getDoctorDetails($email);
+                echo '<script type="text/javascript">window.location = "patient_info.php?speciality='.$result['speciality'].'"</script>';
             }
         }
     }
