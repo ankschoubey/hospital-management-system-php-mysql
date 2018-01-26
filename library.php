@@ -327,6 +327,7 @@
         return $conn->getResult()[0]; // We expect a single row since the email is assumed to be unique
     }
 
+    /* noAccess Functions -- Redundant but neccesary*/
     function noAccessForNormal()
     {
         if (isset($_SESSION['user-type'])) {
@@ -335,6 +336,7 @@
             }
         }
     }
+    
     function noAccessForDoctor()
     {
         if (isset($_SESSION['user-type'])) {
@@ -345,6 +347,7 @@
             }
         }
     }
+    
     function noAccessForClerk()
     {
         if (isset($_SESSION['user-type'])) {
@@ -379,5 +382,5 @@
             echo '<script type="text/javascript">window.location = "index.php"</script>';
         }
     }
-
+	/* End of noAccess Functions*/
 ?>
