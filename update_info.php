@@ -32,7 +32,7 @@
     $appointment_no = $_GET['appointment_no'];
     $result = getAllPatientDetail($appointment_no);
 
-    while($row = $result->fetch_array())
+    foreach($result as $row)
     {
       $link = "<tr><th>";
       $mid = "</th><td>";
