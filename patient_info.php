@@ -33,8 +33,8 @@
 	}else {
 		$result = getPatientsFor(); //fallback to 'Dentist'
 	}
-
-    while ($row = $result->fetch_array()) {
+	
+    foreach ($result as $row) {
         $status = ' ';
         if (appointment_status((int) $row['appointment_no']) == 1) {
             $status = 'table-active';

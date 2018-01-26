@@ -218,9 +218,9 @@
 
     function getPatientsFor($doctor = 'Dentist')
     {
-        global $connection;
-
-        return $connection->query("SELECT appointment_no, full_name, medical_condition FROM patient_info, appointments where speciality='$doctor' AND patient_info.patient_id = appointments.patient_id");
+        global $conn;
+		$conn->sqlQuery("SELECT appointment_no, full_name, medical_condition FROM patient_info, appointments where speciality='$doctor' AND patient_info.patient_id = appointments.patient_id");
+		return $conn->getResult();
     }
 
     function getAllAppointments()
