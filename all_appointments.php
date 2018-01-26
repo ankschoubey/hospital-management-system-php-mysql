@@ -32,7 +32,7 @@
 	$result = getAllAppointments();
 
 
-	while($row = $result->fetch_array())
+	foreach($result as $row)
 	{
 		$status = ' ';
 		if(appointment_status((int) $row['appointment_no']) == 1){

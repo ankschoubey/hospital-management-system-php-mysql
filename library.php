@@ -225,9 +225,9 @@
 
     function getAllAppointments()
     {
-        global $connection;
-
-        return $connection->query('SELECT appointment_no, full_name,speciality, medical_condition FROM patient_info, appointments where patient_info.patient_id = appointments.patient_id');
+        global $conn;
+        $conn->sqlQuery('SELECT appointment_no, full_name,speciality, medical_condition FROM patient_info, appointments where patient_info.patient_id = appointments.patient_id');
+        return $conn->getResult();
     }
 
     function getAllPatientDetail($appointment_no)
