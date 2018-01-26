@@ -69,7 +69,7 @@
                 if(is_bool($result)){
                   echo "No clerks found in database";
                 }else{
-                  while($row = $result->fetch_array())
+                  foreach($result as $row)
                   {
                     echo "<option value='" . $row['email'] . "'>" . $row['email'] . "</option>";
                   }
@@ -136,7 +136,7 @@
                 if(is_bool($result)){
                   echo "No doctors found in database";
                 }else{
-                  while($row = $result->fetch_array())
+                  foreach($result as $row)
                   {
                     echo "<option value='" . $row['email'] . "'>" . $row['email'] . "</option>";
                   }
