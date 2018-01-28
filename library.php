@@ -2,9 +2,7 @@
     if (!isset($_SESSION)) {
         session_start();
     }
-?>
 
-<?php
 	include('api/scrudAPI.php');
 
     $conn = new Database();
@@ -378,7 +376,8 @@
     function noAccessIfNotLoggedIn()
     {
         if (!isset($_SESSION['user-type'])) {
-            echo '<script type="text/javascript">window.location = "index.php"</script>';
+			header("Location: index.php");
+			return;
         }
     }
 	/* End of noAccess Functions*/
