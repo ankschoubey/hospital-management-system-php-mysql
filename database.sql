@@ -9,7 +9,7 @@ CREATE TABLE `appointments` (
   `speciality` varchar(30) NOT NULL,
   `medical_condition` text,
   `doctors_suggestion` varchar(255) DEFAULT NULL,
-  `payment_amount` float DEFAULT '0.00',
+  `payment_amount` double NOT NULL,
   `case_closed` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
