@@ -191,7 +191,7 @@
         $data = $data_unsafe;
 
         if ($column_name == 'payment_amount') {
-            $data = (int) $data;
+            $data = (float) $data;
             $sql = "UPDATE appointments SET payment_amount = $data, case_closed = 'no' WHERE appointment_no = $appointment_no";
         } else {
             $sql = "UPDATE appointments SET $column_name = '$data' WHERE appointment_no = $appointment_no";
