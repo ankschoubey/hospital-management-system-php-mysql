@@ -36,7 +36,7 @@
     $link = "<tr><th>";
     $mid = "</th><td>";
     $endingTag = "</td></tr>";
-    $pay = ($row['payment_amount']) ? "R".$row['payment_amount'] : "R0.00"; //The 'R' is for rands :-)
+    $pay = "R".$row['payment_amount']; //The 'R' is for rands :-)
     echo "<tr>";   // appointment_no, full_name, dob, weight, phone_no, address, blood_group, medical_condition
 
     echo "$link Appointment No $mid". $row['appointment_no'] . "$endingTag";
