@@ -10,7 +10,8 @@
 	noAccessForNormal();
 	noAccessForAdmin();
 	noAccessForDoctor();
-
+	noAccessIfNotLoggedIn();
+	
 	include('nav-bar.php');
 ?>
 
