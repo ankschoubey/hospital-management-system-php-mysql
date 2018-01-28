@@ -35,6 +35,7 @@
     $link = "<tr><th>";
     $mid = "</th><td>";
     $endingTag = "</td></tr>";
+    $pay = ($row['payment_amount']) ? "R".$row['payment_amount'] : "R0.00"; //The 'R' is for rands :-)
     echo "<tr>";   // appointment_no, full_name, dob, weight, phone_no, address, blood_group, medical_condition
 
     echo "$link Appointment No $mid". $row['appointment_no'] . "$endingTag";
@@ -52,18 +53,9 @@
 
     echo "$link Payment $mid" . "<form action='payment.php' method='post'>
 
-
-          <select required value=1 class ='form-control' name='payment' style='width: 500;'>
-                <option value='admin' class='option'>200</option>
-                <option value='clerks' class='option'>500</option>
-                <option value='doctors' class='option'>900</option>
-          </select>
-<input type='number' style='visibility: hidden; width; 1px;' name=\"appointment_no\" value =" . $appointment_no . ">
-
-    <input type='submit' class='btn btn-primary' action='payment.php'></form>" . "$endingTag";
-
-
-    echo "</tr>";
+	<textarea class ='form-control' name='payment' style='width: 500;' placeholder=".$pay."></textarea>
+	<input type='number' style='visibility: hidden; width; 1px;' name='appointment_no' value =" . $appointment_no . ">
+	<input type='submit' class='btn btn-primary' action='payment.php'></form>" . "$endingTag";
   
   }
 ?>
