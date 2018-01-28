@@ -17,7 +17,7 @@
 <div class="container">
   <h2>Welcome, <?php echo $_SESSION["fullname"];?>!</h2>
       <div class='alert alert-info'>
-              <strong>Info!</strong> Appointment will be booked only for today - <? echo date("d/m/y"); ?>. Appointment time will be between 10:30 to 3:30 or 4:30 to 9:30 once appointment is booked.</div>
+              <strong>Info!</strong> Appointment will be booked only for today - <?php echo date("d/m/y"); ?>. Appointment time will be between 10:30 to 3:30 or 4:30 to 9:30 once appointment is booked.</div>
       <h3>Enter Information</h3>
                 <?php
                   if(isset($_POST['apfullname'])){
