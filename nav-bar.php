@@ -14,10 +14,10 @@
 
   if (isset($_SESSION['user-type'])) {
       echo $beginning;
-      $email = $_SESSION['email'];
 
       switch ($_SESSION['user-type']) {
       case 'doctor':
+		$email = $_SESSION['email'];
 		$result = getDoctorDetails($email);
 		$speciality = $result['speciality'];
 		
