@@ -194,9 +194,9 @@
 
         if ($column_name == 'payment_amount') {
             $data = (int) $data;
-            $sql = "UPDATE `appointments` SET `payment_amount` = '$data', `case_closed` = 'no' WHERE appointment_no` = $appointment_no";
+            $sql = "UPDATE appointments SET payment_amount = $data, case_closed = 'no' WHERE appointment_no = $appointment_no";
         } else {
-            $sql = "UPDATE appointments SET $column_name = '$data' WHERE appointment_no = $appointment_no;";
+            $sql = "UPDATE appointments SET $column_name = '$data' WHERE appointment_no = $appointment_no";
         }
         echo $sql;
         try {
@@ -228,7 +228,7 @@
     {
 		global $conn;
 		$bind = ['appointment_no'=>$appointment_no];
-        $conn->sqlQuery("SELECT appointment_no, full_name, dob, weight, phone_no, address, medical_condition FROM patient_info, appointments where appointment_no = :appointment_no AND patient_info.patient_id = appointments.patient_id;", $bind);
+        $conn->sqlQuery("SELECT appointment_no, full_name, dob, weight, phone_no, address, medical_condition, doctors_suggestion, payment_amount FROM patient_info, appointments where appointment_no = :appointment_no AND patient_info.patient_id = appointments.patient_id;", $bind);
         return $conn->getResult();
     }
 
