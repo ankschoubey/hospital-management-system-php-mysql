@@ -3,8 +3,6 @@
         session_start();
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <?php
   $beginning = '<div class="container"><nav class="navbar  navbar-default "><div class="navbar-header">
       <a class="navbar-brand">Navigation Bar </a>
