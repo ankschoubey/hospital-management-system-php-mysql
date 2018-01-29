@@ -351,7 +351,8 @@
     {
         if (isset($_SESSION['user-type'])) {
             if ($_SESSION['user-type'] == 'clerk') {
-                echo '<script type="text/javascript">window.location = "all_appointments.php"</script>';
+				header("Location: all_appointments.php");
+				return;
             }
         }
     }
