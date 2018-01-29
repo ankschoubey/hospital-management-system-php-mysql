@@ -329,7 +329,8 @@
     {
         if (isset($_SESSION['user-type'])) {
             if ($_SESSION['user-type'] == 'normal') {
-                echo '<script type="text/javascript">window.location = "add_patient.php"</script>';
+				header("Location: add_patient.php");
+				return;
             }
         }
     }
