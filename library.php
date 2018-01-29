@@ -361,7 +361,8 @@
     {
         if (isset($_SESSION['user-type'])) {
             if ($_SESSION['user-type'] == 'admin') {
-                echo '<script type="text/javascript">window.location = "admin_home.php"</script>';
+				header("Location: admin_home.php");
+				return;
             }
         }
     }

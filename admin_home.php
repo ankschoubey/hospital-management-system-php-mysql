@@ -15,7 +15,7 @@
 ?>
 
 <div class="container">
- 	<h1 align=center>Admin Login for Sunrise Hospital</h1>
+ 	<h1 align=center>Administrator for Sunrise Hospital</h1>
   
   <?php 
     if(isset($_POST['demail'])){
