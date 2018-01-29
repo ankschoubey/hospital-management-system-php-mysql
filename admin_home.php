@@ -54,7 +54,7 @@
 
         <div class="form-group">
           <input type="submit" class="btn btn-primary" value="Register">
-          <input type="reset" name="" class="btn btn-danger"></button>
+          <input type="reset" name="" class="btn btn-danger">
         </div>
     </form>
       <hr>
@@ -77,7 +77,7 @@
 
             ?>
             </select>
-            </div>
+      </div>
             <div class="form-group">
 
             <input type="submit" class="btn btn-primary" style="padding: 10px;" value="Delete">
@@ -118,7 +118,7 @@
 
         <div class="form-group">
           <input type="submit" class="btn btn-primary" value="Register">
-          <input type="reset" name="" class="btn btn-danger"></button>
+          <input type="reset" name="" class="btn btn-danger">
         </div>
     </form>
 
@@ -150,9 +150,6 @@
               <input type="submit" class="btn btn-primary" value="Delete">
             </div>
           </form>
-        </div>
-    </form>
-  </div>
 </div>
 
 
