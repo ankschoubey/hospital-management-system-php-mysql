@@ -341,7 +341,8 @@
             if ($_SESSION['user-type'] == 'doctor') {
 				$email = $_SESSION['email'];
 				$result = getDoctorDetails($email);
-                echo '<script type="text/javascript">window.location = "patient_info.php?speciality='.$result['speciality'].'"</script>';
+				header("Location: patient_info.php?speciality=".$result['speciality']);
+				return;
             }
         }
     }
