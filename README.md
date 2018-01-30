@@ -1,6 +1,15 @@
 # Hospital Management System Mini-Project
 
-This **was my first short PHP project** for Web Technology subject created in October 2016. 
+This **was Ankush Choubey's first short PHP project** for Web Technology subject created in October 2016.
+I forked this project in January 2018 to make improvements such as adding more features and security. The goal
+is to make a robust and secure system which can be used by any clinic/Hospital. 
+
+## Installation:
+Clone or download the repo.
+Copy the directory to the www/root directory of your webserver.
+Open up phpmyadmin and create a database called hospital.
+Import the database.sql file into your database.
+Then create an admin user then open the site in your browser.
 
 ## Features:
   1. Front Page Slideshow
@@ -9,12 +18,11 @@ This **was my first short PHP project** for Web Technology subject created in Oc
   4. Navigation Bar
   5. Ability to Add patient detail and book appointment.
   6. CSS using Twitter Bootstrap
+  7. Stringent Access Controls
   
-## Screenshots:
-
-Removed to increase load times on slow connections
 
 ## TODO:
- - Lock down the system even more, at the moment a clever user can access records the she/he should not be able to
-
-Copyright (c) 2017 Ankush Choubey - MIT License
+ - [x] Add Stringent Access Controls
+ - [ ] Implement Medicine Stock Controls
+ - [ ] Implement Secure Back-up of Records
+ - [ ] Implement patient records
