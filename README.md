@@ -25,4 +25,4 @@ Then create an admin user then open the site in your browser.
  - [x] Add Stringent Access Controls
  - [ ] Implement Medicine Stock Controls
  - [ ] Implement Secure Back-up of Records
- - [ ] Implement patient records
+ - [ ] Implement patient reports
