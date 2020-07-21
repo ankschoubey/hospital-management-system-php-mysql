@@ -2,20 +2,17 @@
     if(!isset($_SESSION)) 
     { 
         session_start(); 
-    } 
-?>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="jumbotron.css" rel="stylesheet">
-<?php 
-  include("header.php");
-  include("library.php");
+    }
+    
+	include("header.php");
+	include("library.php");
 
-  noAccessForDoctor();
-  noAccessForNormal();
-  noAccessForAdmin();
-  noAccessIfNotLoggedIn();
+	noAccessForDoctor();
+	noAccessForNormal();
+	noAccessForAdmin();
+	noAccessIfNotLoggedIn();
 
-  include('nav-bar.php');
+	include('nav-bar.php');
 ?>
 <div class = 'container'>
 <h2>All Appointments</h2>
@@ -35,7 +32,7 @@
 	$result = getAllAppointments();
 
 
-	while($row = $result->fetch_array())
+	foreach($result as $row)
 	{
 		$status = ' ';
 		if(appointment_status((int) $row['appointment_no']) == 1){

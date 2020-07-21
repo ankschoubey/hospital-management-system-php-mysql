@@ -8,8 +8,8 @@ CREATE TABLE `appointments` (
   `patient_id` int(30) NOT NULL,
   `speciality` varchar(30) NOT NULL,
   `medical_condition` text,
-  `doctors_suggestion` varchar(30) DEFAULT NULL,
-  `payment_amount` int(199) DEFAULT NULL,
+  `doctors_suggestion` varchar(255) DEFAULT NULL,
+  `payment_amount` double NOT NULL,
   `case_closed` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

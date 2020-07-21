@@ -3,8 +3,6 @@
         session_start();
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <?php
   $beginning = '<div class="container"><nav class="navbar  navbar-default "><div class="navbar-header">
       <a class="navbar-brand">Navigation Bar </a>
@@ -17,9 +15,12 @@
 
       switch ($_SESSION['user-type']) {
       case 'doctor':
-
+		$email = $_SESSION['email'];
+		$result = getDoctorDetails($email);
+		$speciality = $result['speciality'];
+		
         echo $frontLink.'add_patient.php"> Add Patient '.$endLink;
-        echo $frontLink.'patient_info.php"> Upcomming Appointments '.$endLink;
+        echo $frontLink.'patient_info.php?speciality='.$speciality.'"> Upcomming Appointments '.$endLink;
         break;
       case 'clerk':
         echo $frontLink.'add_patient.php"> Add Patient '.$endLink;

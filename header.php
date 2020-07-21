@@ -6,15 +6,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title> Sunrise Hospital
-    </title>
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="jumbotron.css" rel="stylesheet">
+    <title> Sunrise Hospital </title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
   </head>
   <body>
       <div class="container" style="padding-top: 10px;">
         <nav class="navbar  navbar-static-top">
-          <a class="navbar-brand">🌅 Sunrise Hospital</a>
+          <a href="index.php" class="navbar-brand"> Sunrise Hospital</a>
             <ul class="nav nav-pills">
               <li class="nav-item">
                 <a href="https://goo.gl/maps/PyT52gM87su" target="_blank"> Address: Plot no- 1, Opposite SBI, Sector 12, Kharghar, Navi Mumbai</a>

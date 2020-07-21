@@ -2,19 +2,18 @@
     if (!isset($_SESSION)) {
         session_start();
     }
-?>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="jumbotron.css" rel="stylesheet">
-<?php
-  include 'header.php';
-  include 'library.php';
-  noAccessIfNotLoggedIn();
-  noAccessForNormal();
-  noAccessForClerk();
-  noAccessForAdmin();
+    
+	include 'header.php';
+	include 'library.php';
+  
+	noAccessIfNotLoggedIn();
+	noAccessForNormal();
+	noAccessForClerk();
+	noAccessForAdmin();
 
-  include 'nav-bar.php';
+	include 'nav-bar.php';
 ?>
+
 <div class = 'container'>
 <h2>Upcomming Appointments</h2>
 <p>Click on the the field to fill additional information</p>
@@ -28,9 +27,14 @@
 				</tr>
 	</thead>
 <?php
-    $result = getPatientsFor('Dentist');
-
-    while ($row = $result->fetch_array()) {
+	if(isset($_GET['speciality'])){
+		 $speciality = $_GET['speciality'];
+		 $result = getPatientsFor($speciality);
+	}else {
+		$result = getPatientsFor(); //fallback to 'Dentist'
+	}
+	
+    foreach ($result as $row) {
         $status = ' ';
         if (appointment_status((int) $row['appointment_no']) == 1) {
             $status = 'table-active';
@@ -49,4 +53,5 @@
 ?>
 </table>
 </div>
+
 <?php include 'footer.php'; ?>

@@ -3,17 +3,18 @@
     {
         session_start();
     }
+	ini_set('display_errors','1');
+	include("header.php");
+	include("library.php");
+  
+	noAccessIfNotLoggedIn();
+	noAccessForNormal();
+	noAccessForClerk();
+	noAccessForAdmin();
+  
+	include("nav-bar.php");
 ?>
-<link href="bootstrap.min.css" rel="stylesheet">
-<?php
-  include("header.php");
-  include("library.php");
-  noAccessIfNotLoggedIn();
-  noAccessForNormal();
-  noAccessForClerk();
-  noAccessForAdmin();
-  include("nav-bar.php");
-?>
+
 <div class="container">
 <h2>Update Patient Info </h2>
 <p>Enter Information Below</p>
@@ -31,11 +32,12 @@
     $appointment_no = $_GET['appointment_no'];
     $result = getAllPatientDetail($appointment_no);
 
-    while($row = $result->fetch_array())
+    foreach($result as $row)
     {
       $link = "<tr><th>";
       $mid = "</th><td>";
       $endingTag = "</td></tr>";
+      $suggestion = ($row['doctors_suggestion']) ? $row['doctors_suggestion'] : "Nothing suggested yet.";
       echo "<tr>";   // appointment_no, full_name, dob, weight, phone_no, address, blood_group, medical_condition
       echo "$link Appointment No $mid". $row['appointment_no'] . "$endingTag";
       echo "$link Full Name $mid" . $row['full_name'] . "$endingTag";
@@ -44,11 +46,12 @@
       echo "$link Phone No $mid" . $row['phone_no'] . "$endingTag";
       echo "$link Address $mid" . $row['address'] . "$endingTag";
       echo "$link Medical Condition - $mid" . $row['medical_condition'] . "$endingTag";
-      echo "$link Doctor's Suggestions - $mid" . "<form action='update_info.php' method='post'><textarea class='form-group form-control' name='upSugg' style='resize: none;'></textarea><input type='number' style='visibility: hidden; width; 1px;' name='appointment_no' value =". $appointment_no . "><input type='submit' class='btn btn-primary' action='update_info.php'></form>" . "$endingTag";
+      echo "$link Doctor's Suggestions - $mid" . "<form action='update_info.php' method='post'><textarea class='form-group form-control' name='upSugg' style='resize: none;'>".$suggestion."</textarea><input type='number' style='visibility: hidden; width; 1px;' name='appointment_no' value =". $appointment_no . "><input type='submit' class='btn btn-primary' action='update_info.php'></form>" . "$endingTag";
       echo "</tr>";
     }
   }
 ?>
 </table>
 </div>
+
 <?php include("footer.php");?>

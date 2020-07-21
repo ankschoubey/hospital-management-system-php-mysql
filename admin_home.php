@@ -3,23 +3,19 @@
     { 
         session_start(); 
     } 
+
+    include("header.php");
+	include("library.php");
+
+	noAccessForClerk();
+	noAccessForDoctor();
+	noAccessForNormal();
+
+	noAccessIfNotLoggedIn();
 ?>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="jumbotron.css" rel="stylesheet">
 
-<?php 
-  include("header.php");
-  include("library.php");
-
-  noAccessForClerk();
-  noAccessForDoctor();
-  noAccessForNormal();
-
-  noAccessIfNotLoggedIn();
-
-?>
 <div class="container">
- 	<h1 align=center>Admin Login for Sunrise Hospital</h1>
+ 	<h1 align=center>Administrator for Sunrise Hospital</h1>
   
   <?php 
     if(isset($_POST['demail'])){
@@ -58,7 +54,7 @@
 
         <div class="form-group">
           <input type="submit" class="btn btn-primary" value="Register">
-          <input type="reset" name="" class="btn btn-danger"></button>
+          <input type="reset" name="" class="btn btn-danger">
         </div>
     </form>
       <hr>
@@ -73,7 +69,7 @@
                 if(is_bool($result)){
                   echo "No clerks found in database";
                 }else{
-                  while($row = $result->fetch_array())
+                  foreach($result as $row)
                   {
                     echo "<option value='" . $row['email'] . "'>" . $row['email'] . "</option>";
                   }
@@ -81,7 +77,7 @@
 
             ?>
             </select>
-            </div>
+      </div>
             <div class="form-group">
 
             <input type="submit" class="btn btn-primary" style="padding: 10px;" value="Delete">
@@ -122,7 +118,7 @@
 
         <div class="form-group">
           <input type="submit" class="btn btn-primary" value="Register">
-          <input type="reset" name="" class="btn btn-danger"></button>
+          <input type="reset" name="" class="btn btn-danger">
         </div>
     </form>
 
@@ -140,7 +136,7 @@
                 if(is_bool($result)){
                   echo "No doctors found in database";
                 }else{
-                  while($row = $result->fetch_array())
+                  foreach($result as $row)
                   {
                     echo "<option value='" . $row['email'] . "'>" . $row['email'] . "</option>";
                   }
@@ -154,9 +150,6 @@
               <input type="submit" class="btn btn-primary" value="Delete">
             </div>
           </form>
-        </div>
-    </form>
-  </div>
 </div>
 
 

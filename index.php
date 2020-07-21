@@ -1,17 +1,16 @@
 <?php
-session_start();
+	session_start();
+	
+	include("header.php");
+	include("library.php");
+  
+	noAccessIfLoggedIn();
 ?>
-<link href="bootstrap.min.css" rel="stylesheet">
 
-<?php 
-  include("header.php");
-  include("library.php");
-  noAccessIfLoggedIn();
-?>
 <div class="container">
  	<h1>Welcome to Sunrise Hospital's Official Website</h1>
-    <p class="block-quote">Our aim has always been to bring world–class medical care within the reach of common man.</p>
-    <p><?php include('slideshow.php');?></p>
+    <p class="block-quote">Our aim has always been to bring world class medical care within the reach of common man.</p>
+    <?php include('slideshow.php');?>
   <?php 
     if(isset($_POST['lemail'])){
       $i = login($_POST['lemail'],$_POST['lpassword'],"users");
@@ -69,12 +68,13 @@ session_start();
 
 	      <div class="form-group">
 	        <input type="submit" class="btn btn-primary">
-	        <input type="reset" class="btn btn-danger"></button>
+	        <input type="reset" class="btn btn-danger">
 	      </div>
     </form>
   </div>
 </div>
 </div>
+
 <?php include("footer.php"); ?>
 
 
